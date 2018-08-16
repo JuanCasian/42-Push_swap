@@ -6,11 +6,11 @@
 /*   By: jcasian <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 19:59:53 by jcasian           #+#    #+#             */
-/*   Updated: 2018/08/15 20:08:18 by jcasian          ###   ########.fr       */
+/*   Updated: 2018/08/15 20:55:53 by jcasian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "push_swap.h"
 
 int		main(void)
 {
