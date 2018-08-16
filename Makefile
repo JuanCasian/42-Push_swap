@@ -6,7 +6,7 @@
 #    By: jcasian <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/08/15 19:31:56 by jcasian           #+#    #+#              #
-#    Updated: 2018/08/15 20:39:24 by jcasian          ###   ########.fr        #
+#    Updated: 2018/08/15 20:51:44 by jcasian          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,14 +20,14 @@ PNAME = push_swap
 LIBFTDIR = libft
 LIBSDIR = libs
 INCLUDES = includes
-CSRCSDIR = srcs/checker
-PSRCSDIR = srcs/push_swap
+CSRCSDIR = srcs
+PSRCSDIR = srcs
 
 CSRCS = $(addprefix $(CSRCSDIR)/,\
-		main.c)
+		checker.c)
 
 PSRCS = $(addprefix $(PSRCSDIR)/,\
-		main.c)
+		push_swap.c)
 
 LIBFTSRCS = $(addprefix $(LIBFTDIR)/,\
 			checks_after_percentage.c ft_atoi.c ft_bzero.c ft_count_words.c \
