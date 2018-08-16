@@ -1,0 +1,7 @@
+.D*
+._*
+*.o
+*.swp
+debug*
+checker
+push_swap
