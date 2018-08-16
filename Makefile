@@ -6,7 +6,7 @@
 #    By: jcasian <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/08/15 19:31:56 by jcasian           #+#    #+#              #
-#    Updated: 2018/08/15 19:58:28 by jcasian          ###   ########.fr        #
+#    Updated: 2018/08/15 20:14:41 by jcasian          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -115,6 +115,10 @@ $(PNAME)fclean:
 	@echo "${YELLOW}Cleanning Program...${NC}"
 	@rm -f $(PNAME)
 	@echo "${GREEN}DONE!${NC}"
+
+clean:  $(PNAME)clean $(CNAME)clean libclean
+
+fclean: $(PNAME)fclean $(CNAME)fclean libfclean
 
 debug$(CNAME):
 	gcc -g -Wall -Werror -Wextra $(CSRCS) $(LIBFTSRCS) -I$(INCLUDES) -o debug
