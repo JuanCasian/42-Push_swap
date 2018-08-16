@@ -6,7 +6,7 @@
 #    By: jcasian <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/08/15 19:31:56 by jcasian           #+#    #+#              #
-#    Updated: 2018/08/15 20:14:41 by jcasian          ###   ########.fr        #
+#    Updated: 2018/08/15 20:39:24 by jcasian          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -96,29 +96,29 @@ $(PNAME): $(POBJS)
 	@gcc -Wall -Werror -Wextra -I$(INCLUDES) -L$(LIBSDIR) -lft $(POBJS) -o $(PNAME)
 	@echo "${GREEN}Program:" $(PNAME) "is ready!${NC}"
 
-$(CNAME)clean:
+cclean:
 	@echo "${YELLOW}Cleanning objects...${NC}"
 	@rm -f $(COBJS)
 	@echo "${GREEN}DONE!${NC}"
 
-$(PNAME)clean:
+pclean:
 	@echo "${YELLOW}Cleanning objects...${NC}"
 	@rm -f $(POBJS)
 	@echo "${GREEN}DONE!${NC}"
 
-$(CNAME)fclean:
+cfclean: cclean
 	@echo "${YELLOW}Cleanning Program...${NC}"
 	@rm -f $(CNAME)
 	@echo "${GREEN}DONE!${NC}"
 
-$(PNAME)fclean:
+pfclean: pclean
 	@echo "${YELLOW}Cleanning Program...${NC}"
 	@rm -f $(PNAME)
 	@echo "${GREEN}DONE!${NC}"
 
-clean:  $(PNAME)clean $(CNAME)clean libclean
+clean:  cclean pclean libclean
 
-fclean: $(PNAME)fclean $(CNAME)fclean libfclean
+fclean: pfclean cfclean libfclean
 
 debug$(CNAME):
 	gcc -g -Wall -Werror -Wextra $(CSRCS) $(LIBFTSRCS) -I$(INCLUDES) -o debug
