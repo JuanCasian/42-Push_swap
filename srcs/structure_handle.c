@@ -1,37 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   structure_handle.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcasian <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/15 20:06:05 by jcasian           #+#    #+#             */
-/*   Updated: 2018/08/20 12:55:07 by jcasian          ###   ########.fr       */
+/*   Created: 2018/08/18 14:38:56 by jcasian           #+#    #+#             */
+/*   Updated: 2018/08/18 16:46:15 by jcasian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
+#include "push_swap.h"
 
-# define PUSH_SWAP_H
-
-#include "libft.h"
-
-typedef struct	s_stack
+t_push_swap		*initiate_structure(void)
 {
-	int				val;
-	struct s_stack	*next;
-}				t_stack;
+	t_push_swap	*ps;
 
-typedef struct	s_push_swap
-{
-	t_stack	*a;
-	t_stack	*b;
-	int		asize;
-	int		bsize;
-}				t_push_swap;
-
-t_push_swap		*initiate_structure(void);
-void			put_error(void);
-int				*get_input(int ac, char **av);
-
-#endif
+	if (!(ps = (t_push_swap*)malloc(sizeof(t_push_swap))))
+		put_error();
+	ps->a = NULL;
+	ps->b = NULL;
+	ps->asize = 0;
+	ps->bsize = 0;
+	return (ps);
+}

@@ -6,7 +6,7 @@
 #    By: jcasian <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/08/15 19:31:56 by jcasian           #+#    #+#              #
-#    Updated: 2018/08/15 20:51:44 by jcasian          ###   ########.fr        #
+#    Updated: 2018/08/20 13:09:06 by jcasian          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,9 @@ CSRCS = $(addprefix $(CSRCSDIR)/,\
 
 PSRCS = $(addprefix $(PSRCSDIR)/,\
 		push_swap.c)
+SRCS =  $(addprefix $(PSRCSDIR)/,\
+		put_error.c structure_handle.c get_input.c)
+ 
 
 LIBFTSRCS = $(addprefix $(LIBFTDIR)/,\
 			checks_after_percentage.c ft_atoi.c ft_bzero.c ft_count_words.c \
@@ -55,11 +58,17 @@ LIBFTSRCS = $(addprefix $(LIBFTDIR)/,\
 
 LIBFTOBJECTS = $(patsubst %.c, %.o, $(LIBFTSRCS))
 
+OBJS = $(patsubst %.c, %.o, $(SRCS))
+
 COBJS = $(patsubst %.c, %.o, $(CSRCS))
 
 POBJS = $(patsubst %.c, %.o, $(PSRCS))
 
 all: lib $(CNAME) $(PNAME)
+
+$(OBJS): %.o: %.c
+	@echo "${YELLOW}Preparing Objects... Please wait${NC}"
+	@gcc -Wall -Werror -Wextra -I$(INCLUDES) -c $< -o $@
 
 $(LIBFTOBJECTS): %.o: %.c
 	@echo "${YELLOW}Preparing Library... Please wait${NC}"
@@ -88,12 +97,12 @@ libfclean: libclean
 	@rm -f $(LIBSDIR)/libft.a
 	@echo "${GREEN}DONE!${NC}"
 
-$(CNAME): $(COBJS)
-	@gcc -Wall -Werror -Wextra -I$(INCLUDES) -L$(LIBSDIR) -lft $(COBJS) -o $(CNAME)
+$(CNAME): $(OBJS) $(COBJS) 
+	@gcc -Wall -Werror -Wextra -I$(INCLUDES) -L$(LIBSDIR) -lft $(COBJS) $(OBJS) -o $(CNAME)
 	@echo "${GREEN}Program:" $(CNAME) "is ready!${NC}"
 
-$(PNAME): $(POBJS)
-	@gcc -Wall -Werror -Wextra -I$(INCLUDES) -L$(LIBSDIR) -lft $(POBJS) -o $(PNAME)
+$(PNAME): $(OBJS) $(POBJS)
+	@gcc -Wall -Werror -Wextra -I$(INCLUDES) -L$(LIBSDIR) -lft $(POBJS) $(OBJS) -o $(PNAME)
 	@echo "${GREEN}Program:" $(PNAME) "is ready!${NC}"
 
 cclean:
@@ -121,19 +130,19 @@ clean:  cclean pclean libclean
 fclean: pfclean cfclean libfclean
 
 debug$(CNAME):
-	gcc -g -Wall -Werror -Wextra $(CSRCS) $(LIBFTSRCS) -I$(INCLUDES) -o debug
+	gcc -g -Wall -Werror -Wextra $(CSRCS) $(SRCS) $(LIBFTSRCS) -I$(INCLUDES) -o debug
 
 debug$(PNAME):
-	gcc -g -Wall -Werror -Wextra $(PSRCS) $(LIBFTSRCS) -I$(INCLUDES) -o debug
+	gcc -g -Wall -Werror -Wextra $(PSRCS) $(SRCS) $(LIBFTSRCS) -I$(INCLUDES) -o debug
 
 debugclean:
 	rm -rf debug*
 
 relib: fclean lib
 
-re$(CNAME): $(CNAME)fclean $(CNAME)
+re$(CNAME): cfclean $(CNAME)
 
-re$(PNAME): $(PNAME)fclean $(PNAME)
+re$(PNAME): cfclean $(PNAME)
 
 re: $(PNAME)fclean $(CNAME)fclean libfclean all
 
