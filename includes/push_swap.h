@@ -32,6 +32,12 @@ typedef struct	s_push_swap
 
 t_push_swap		*initiate_structure(void);
 void			put_error(void);
-int				*get_input(int ac, char **av);
+int				*get_input(int ac, char **av, t_push_swap *p);
+t_stack			*new_elem(int input);
+void			add_endelem(t_stack **head, t_stack *new_elem);
+void			init_stack(t_push_swap *ps, int *p_input);
+
+
+
 
 #endif

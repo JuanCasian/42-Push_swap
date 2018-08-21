@@ -18,5 +18,8 @@ int		main(int ac, char **av)
 	int			*p_input;
 
 	ps = initiate_structure();
-	p_input = get_input(ac, av);
+	if (!(p_input = get_input(ac, av, ps)))
+		exit(0);
+	init_stack(ps, p_input);
+	
 }

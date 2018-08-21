@@ -84,16 +84,29 @@ static char	**multiple_args(int ac, char **av)
 
 }
 
-int		*get_input(int ac, char **av)
+int		*get_input(int ac, char **av, t_push_swap *p)
 {
-	int		*p_input;
-	char	**p_str;
+	int			*p_input;
+	char		**p_str;
+	long long	tmp;
 
 	if (ac == 2)
 		p_str = single_str(av[1]);
 	else if (ac > 2)
 		p_str = multiple_args(ac, av);
-
-	p_input = NULL;
+	else
+		return (NULL);
+	p->asize = -1;
+	while (p_str[++(p->asize)]);
+	if (!(p_input = (int*)malloc(sizeof(int) * p->asize)))
+		put_error();
+	p->asize = -1;
+	while (p_str[++(p->asize)])
+	{
+		tmp = ft_atoll(p_str[p->asize]);
+		if (tmp >= 21474836487 || tmp <= -2147483648)
+			put_error();
+		p_input[p->asize] = (int)tmp;
+	}
 	return (p_input);
 }

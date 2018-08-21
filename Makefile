@@ -29,7 +29,7 @@ CSRCS = $(addprefix $(CSRCSDIR)/,\
 PSRCS = $(addprefix $(PSRCSDIR)/,\
 		push_swap.c)
 SRCS =  $(addprefix $(PSRCSDIR)/,\
-		put_error.c structure_handle.c get_input.c)
+		put_error.c structure_handle.c get_input.c stack_functions.c)
  
 
 LIBFTSRCS = $(addprefix $(LIBFTDIR)/,\
@@ -54,7 +54,7 @@ LIBFTSRCS = $(addprefix $(LIBFTDIR)/,\
 			prepare_char.c prepare_hexadecimal.c prepare_octal.c \
 			prepare_percentage.c prepare_signed.c prepare_str.c prepare_undecimal.c \
 			print_error.c struct_handle.c ft_countcharsrepetition.c \
-			get_next_line_stdin.c)
+			get_next_line_stdin.c ft_atoll.c)
 
 LIBFTOBJECTS = $(patsubst %.c, %.o, $(LIBFTSRCS))
 
