@@ -69,7 +69,7 @@ static char	**multiple_args(int ac, char **av)
 	j = 0;
 	if (!(res = (char**)malloc(sizeof(char*) * ac)))
 		put_error();
-	while (i < ac)
+	while (av[i])
 	{
 		if (valid_str(av[i]) && single_num(av[i]))
 		{
@@ -79,9 +79,10 @@ static char	**multiple_args(int ac, char **av)
 		else
 			put_error();
 		i++;
+		j++;
 	}
+	res[j] = NULL;	
 	return (res);
-
 }
 
 int		*get_input(int ac, char **av, t_push_swap *p)
@@ -96,8 +97,9 @@ int		*get_input(int ac, char **av, t_push_swap *p)
 		p_str = multiple_args(ac, av);
 	else
 		return (NULL);
-	p->asize = -1;
-	while (p_str[++(p->asize)]);
+	p->asize = 0;
+	while (p_str[p->asize])
+		(p->asize)++;
 	if (!(p_input = (int*)malloc(sizeof(int) * p->asize)))
 		put_error();
 	p->asize = -1;
@@ -108,5 +110,6 @@ int		*get_input(int ac, char **av, t_push_swap *p)
 			put_error();
 		p_input[p->asize] = (int)tmp;
 	}
+	free_parsed_str(&p_str);
 	return (p_input);
 }

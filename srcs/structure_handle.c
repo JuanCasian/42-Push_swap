@@ -22,5 +22,6 @@ t_push_swap		*initiate_structure(void)
 	ps->b = NULL;
 	ps->asize = 0;
 	ps->bsize = 0;
+	ps->fd = STDIN_FILENO;
 	return (ps);
 }

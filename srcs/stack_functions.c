@@ -4,13 +4,13 @@
 
 t_stack	*new_elem(int input)
 {
-	t_stack *new;
+	t_stack *new_elem;
 
-	if (!(new = (t_stack*)malloc(sizeof(t_stack))))
+	if (!(new_elem = (t_stack*)malloc(sizeof(t_stack))))
 		put_error();
-	new->val = input;
-	new->next = NULL;
-	return (new);
+	new_elem->val = input;
+	new_elem->next = NULL;
+	return (new_elem);
 }
 
 void	add_endelem(t_stack **head, t_stack *new_elem)
@@ -27,7 +27,7 @@ void	add_endelem(t_stack **head, t_stack *new_elem)
 		tmp = *head;
 		while (tmp->next)
 			tmp = tmp->next;
-		tmp->next = new;
+		tmp->next = new_elem;
 	}
 }
 
@@ -42,4 +42,26 @@ void	init_stack(t_push_swap *ps, int *p_input)
 		tmp = new_elem(p_input[i]);
 		add_endelem(&(ps->a), tmp);
 	}
+}
+
+void	print_stacks(t_push_swap *ps)
+{
+	t_stack *tmp;
+
+	tmp = ps->a;
+	ft_printf("Stack (a): ");
+	while (tmp)
+	{
+		ft_printf("|%i|->",tmp->val);
+		tmp = tmp->next;
+	}
+	ft_printf("(null)\n");
+	tmp = ps->b;
+	ft_printf("Stack (b): ");
+	while (tmp)
+	{
+		ft_printf("|%i|->",tmp->val);
+		tmp = tmp->next;
+	}
+	ft_printf("(null)\n");
 }

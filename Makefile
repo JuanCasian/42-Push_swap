@@ -29,7 +29,8 @@ CSRCS = $(addprefix $(CSRCSDIR)/,\
 PSRCS = $(addprefix $(PSRCSDIR)/,\
 		push_swap.c)
 SRCS =  $(addprefix $(PSRCSDIR)/,\
-		put_error.c structure_handle.c get_input.c stack_functions.c)
+		put_error.c structure_handle.c get_input.c stack_functions.c \
+		free_functions.c check_order_functions.c)
  
 
 LIBFTSRCS = $(addprefix $(LIBFTDIR)/,\
