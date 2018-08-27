@@ -41,5 +41,17 @@ void			print_stacks(t_push_swap *ps);
 void			free_parsed_str(char ***str);
 void			check_final_order(t_push_swap *ps);
 void			check_initial_order(t_push_swap *ps);
+void			swap_a(t_push_swap *ps);
+void			swap_b(t_push_swap *ps);
+void			swap_s(t_push_swap *ps);
+void			push_a(t_push_swap *ps);
+void			push_b(t_push_swap *ps);
+void			rotate_a(t_push_swap *ps);
+void			rotate_b(t_push_swap *ps);
+void			rotate_r(t_push_swap *ps);
+void			rev_rotate_a(t_push_swap *ps);
+void			rev_rotate_b(t_push_swap *ps);
+void			rev_rotate_r(t_push_swap *ps);
+void			validate_and_apply(t_push_swap *ps, char *str);
 
 #endif

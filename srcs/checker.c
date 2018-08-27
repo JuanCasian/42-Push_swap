@@ -34,8 +34,7 @@ int		main(int ac, char **av)
 		else if (gres == 0)
 			flag = 0;
 		else
-			ft_printf("%s\n", line);
-			//validate_and_apply(ps, line);
+			validate_and_apply(ps, line);
 	}
 	check_final_order(ps);
 	return (0);

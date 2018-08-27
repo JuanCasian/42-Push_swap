@@ -22,6 +22,7 @@ LIBSDIR = libs
 INCLUDES = includes
 CSRCSDIR = srcs
 PSRCSDIR = srcs
+FLAGS = 
 
 CSRCS = $(addprefix $(CSRCSDIR)/,\
 		checker.c)
@@ -30,8 +31,9 @@ PSRCS = $(addprefix $(PSRCSDIR)/,\
 		push_swap.c)
 SRCS =  $(addprefix $(PSRCSDIR)/,\
 		put_error.c structure_handle.c get_input.c stack_functions.c \
-		free_functions.c check_order_functions.c)
- 
+		free_functions.c check_order_functions.c rotate_functions.c \
+		swap_functions.c rev_rotate_functions.c validate_and_apply.c \
+		push_functions.c) 
 
 LIBFTSRCS = $(addprefix $(LIBFTDIR)/,\
 			checks_after_percentage.c ft_atoi.c ft_bzero.c ft_count_words.c \
@@ -69,19 +71,19 @@ all: lib $(CNAME) $(PNAME)
 
 $(OBJS): %.o: %.c
 	@echo "${YELLOW}Preparing Objects... Please wait${NC}"
-	@gcc -Wall -Werror -Wextra -I$(INCLUDES) -c $< -o $@
+	@gcc $(FLAGS) -I$(INCLUDES) -c $< -o $@
 
 $(LIBFTOBJECTS): %.o: %.c
 	@echo "${YELLOW}Preparing Library... Please wait${NC}"
-	@gcc -Wall -Werror -Wextra -I$(INCLUDES) -c $< -o $@
+	@gcc $(FLAGS) -I$(INCLUDES) -c $< -o $@
 
 $(COBJS): %.o: %.c
 	@echo "${YELLOW}Preparing Checker... Please wait${NC}"
-	@gcc -Wall -Werror -Wextra -I$(INCLUDES) -c $< -o $@
+	@gcc $(FLAGS) -I$(INCLUDES) -c $< -o $@
 
 $(POBJS): %.o: %.c
 	@echo "${YELLOW}Preparing Push_swap... Please wait${NC}"
-	@gcc -Wall -Werror -Wextra -I$(INCLUDES) -c $< -o $@
+	@gcc $(FLAGS) -I$(INCLUDES) -c $< -o $@
 
 lib: $(LIBFTOBJECTS)
 	@ar rc $(LIBSDIR)/libft.a $(LIBFTOBJECTS)
