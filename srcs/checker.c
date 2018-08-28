@@ -6,7 +6,7 @@
 /*   By: jcasian <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 19:59:53 by jcasian           #+#    #+#             */
-/*   Updated: 2018/08/18 16:09:07 by jcasian          ###   ########.fr       */
+/*   Updated: 2018/08/27 20:04:54 by jcasian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int		main(int ac, char **av)
 			flag = 0;
 		else
 			validate_and_apply(ps, line);
+		print_stacks(ps);
 	}
 	check_final_order(ps);
 	return (0);
