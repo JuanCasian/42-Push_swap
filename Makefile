@@ -147,7 +147,7 @@ re$(CNAME): cfclean $(CNAME)
 
 re$(PNAME): cfclean $(PNAME)
 
-re: $(PNAME)fclean $(CNAME)fclean libfclean all
+re: pfclean cfclean libfclean all
 
 
 

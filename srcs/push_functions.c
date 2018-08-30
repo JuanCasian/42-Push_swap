@@ -6,6 +6,8 @@ void	push_a(t_push_swap *ps)
 {
 	t_stack *tmp;
 
+	if (!ps->b)
+		return ;
 	tmp = ps->b;
 	ps->b = ps->b->next;
 	tmp->next = ps->a;
@@ -16,6 +18,8 @@ void	push_b(t_push_swap *ps)
 {
 	t_stack *tmp;
 
+	if (!ps->a)
+		return ;
 	tmp = ps->a;
 	ps->a = ps->a->next;
 	tmp->next = ps->b;
