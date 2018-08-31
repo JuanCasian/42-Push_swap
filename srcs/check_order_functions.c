@@ -43,7 +43,7 @@ static int	is_ordered(t_push_swap *ps)
 	return (1);
 }
 
-static void check_repetition(t_push_swap *ps)
+void check_repetition(t_push_swap *ps)
 {
 	t_stack	*runner;
 	t_stack *tmp;
@@ -66,16 +66,6 @@ static void check_repetition(t_push_swap *ps)
 				put_error();
 			tmp = tmp->next;
 		}
-	}
-}
-
-void	check_initial_order(t_push_swap *ps)
-{
-	check_repetition(ps);
-	if (is_ordered(ps) == 1)
-	{
-		ft_printf("OK\n");
-		exit(0);
 	}
 }
 

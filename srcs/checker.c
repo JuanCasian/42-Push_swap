@@ -26,7 +26,7 @@ int		main(int ac, char **av)
 		exit(0);
 	init_stack(ps, p_input);
 	free(p_input);
-	check_initial_order(ps);
+	check_repetition(ps);
 	while (flag)
 	{
 		if ((gres = get_next_line_sin(ps->fd, &line)) < 0 )
@@ -35,7 +35,6 @@ int		main(int ac, char **av)
 			flag = 0;
 		else
 			validate_and_apply(ps, line);
-		print_stacks(ps);
 	}
 	check_final_order(ps);
 	return (0);

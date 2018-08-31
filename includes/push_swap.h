@@ -53,5 +53,6 @@ void			rev_rotate_a(t_push_swap *ps);
 void			rev_rotate_b(t_push_swap *ps);
 void			rev_rotate_r(t_push_swap *ps);
 void			validate_and_apply(t_push_swap *ps, char *str);
+void			check_repetition(t_push_swap *ps);
 
 #endif
