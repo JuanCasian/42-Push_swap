@@ -4,16 +4,16 @@
 
 static int	check_bstack(t_push_swap *ps, int prev)
 {
-	t_stack	*tmp;
-
+	t_stack *tmp;
+	
 	if (ps->b)
 	{
-		if (prev > ps->b->val)
+		if (prev < ps->b->val)
 			return (0);
 		tmp = ps->b;
 		while (tmp->next)
 		{
-			if (tmp->val > tmp->next->val)
+			if (tmp->val < tmp->next->val)
 				return (0);
 			tmp = tmp->next;
 		}
@@ -71,8 +71,15 @@ void check_repetition(t_push_swap *ps)
 
 void	check_final_order(t_push_swap *ps)
 {
-	if (is_ordered(ps) == 1)
+	if (is_ordered(ps) && !(ps->b))
 		ft_printf("OK\n");
 	else
 		ft_printf("KO\n");
+}
+
+int		both_ordered(t_push_swap *ps)
+{
+	if (!(is_ordered(ps)))
+		return (0);
+	return (1);
 }

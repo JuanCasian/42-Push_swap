@@ -22,7 +22,7 @@ LIBSDIR = libs
 INCLUDES = includes
 CSRCSDIR = srcs
 PSRCSDIR = srcs
-FLAGS = 
+FLAGS = -Wall -Werror -Wextra
 
 CSRCS = $(addprefix $(CSRCSDIR)/,\
 		checker.c)
