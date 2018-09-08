@@ -2,13 +2,15 @@
 
 #include "push_swap.h"
 
-static int	check_bstack(t_push_swap *ps, int prev)
+static int	check_bstack(t_push_swap *ps)
 {
 	t_stack *tmp;
 	
 	if (ps->b)
 	{
-		if (prev < ps->b->val)
+//		if (prev < ps->b->val)
+//			return (0);
+		if (ps->b > ps->a)
 			return (0);
 		tmp = ps->b;
 		while (tmp->next)
@@ -26,7 +28,7 @@ static int	is_ordered(t_push_swap *ps)
 	t_stack	*tmp;
 	int		prev;
 
-	prev = -2147483648;
+	prev = 2147483647;
 	if (ps->a)
 	{
 		tmp = ps->a;
@@ -36,9 +38,9 @@ static int	is_ordered(t_push_swap *ps)
 				return (0);
 			tmp = tmp->next;
 		}
-		prev = tmp->val;
+//		prev = tmp->val;
 	}
-	if (check_bstack(ps, prev) == 0)
+	if (check_bstack(ps) == 0)
 		return (0);
 	return (1);
 }

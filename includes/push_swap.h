@@ -55,5 +55,7 @@ void			rev_rotate_r(t_push_swap *ps);
 void			validate_and_apply(t_push_swap *ps, char *str);
 void			check_repetition(t_push_swap *ps);
 int				both_ordered(t_push_swap *ps);
+int				get_lastVal(t_stack *mystack);
+void			call_and_print(t_push_swap *ps, char *str);
 
 #endif

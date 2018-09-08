@@ -29,3 +29,9 @@ void	validate_and_apply(t_push_swap *ps, char *str)
 	else
 		put_error();
 }
+
+void	call_and_print(t_push_swap *ps, char *str)
+{
+	validate_and_apply(ps, str);
+	ft_printf("%s\n", str);
+}

@@ -65,3 +65,17 @@ void	print_stacks(t_push_swap *ps)
 	}
 	ft_printf("(null)\n");
 }
+
+int		get_lastVal(t_stack *mystack)
+{
+	t_stack	*tmp;
+
+	tmp = mystack;
+	if (mystack)
+	{
+		while (tmp->next)
+			tmp = tmp->next;
+		return (tmp->val);
+	}
+	return (2147483647);
+}
