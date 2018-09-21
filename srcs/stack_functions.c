@@ -1,4 +1,14 @@
-//Header
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack_functions.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jcasian <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/09/20 21:03:58 by jcasian           #+#    #+#             */
+/*   Updated: 2018/09/20 21:06:01 by jcasian          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap.h"
 
@@ -52,7 +62,7 @@ void	print_stacks(t_push_swap *ps)
 	ft_printf("Stack (a): ");
 	while (tmp)
 	{
-		ft_printf("|%i|->",tmp->val);
+		ft_printf("|%i|->", tmp->val);
 		tmp = tmp->next;
 	}
 	ft_printf("(null)\n");
@@ -60,22 +70,8 @@ void	print_stacks(t_push_swap *ps)
 	ft_printf("Stack (b): ");
 	while (tmp)
 	{
-		ft_printf("|%i|->",tmp->val);
+		ft_printf("|%i|->", tmp->val);
 		tmp = tmp->next;
 	}
 	ft_printf("(null)\n");
-}
-
-int		get_lastVal(t_stack *mystack)
-{
-	t_stack	*tmp;
-
-	tmp = mystack;
-	if (mystack)
-	{
-		while (tmp->next)
-			tmp = tmp->next;
-		return (tmp->val);
-	}
-	return (2147483647);
 }

@@ -6,7 +6,7 @@
 /*   By: jcasian <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/18 14:51:44 by jcasian           #+#    #+#             */
-/*   Updated: 2018/08/20 13:33:15 by jcasian          ###   ########.fr       */
+/*   Updated: 2018/09/20 21:03:38 by jcasian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static int	valid_str(char *str)
 {
 	int i;
-	
+
 	i = -1;
 	while (str[++i])
 	{
@@ -61,7 +61,7 @@ static int	single_num(char *str)
 
 static char	**multiple_args(int ac, char **av)
 {
-	int 	i;
+	int		i;
 	int		j;
 	char	**res;
 
@@ -81,11 +81,11 @@ static char	**multiple_args(int ac, char **av)
 		i++;
 		j++;
 	}
-	res[j] = NULL;	
+	res[j] = NULL;
 	return (res);
 }
 
-int		*get_input(int ac, char **av, t_push_swap *p)
+int			*get_input(int ac, char **av, t_push_swap *p)
 {
 	int			*p_input;
 	char		**p_str;

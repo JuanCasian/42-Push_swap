@@ -6,7 +6,7 @@
 /*   By: jcasian <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 20:06:05 by jcasian           #+#    #+#             */
-/*   Updated: 2018/08/20 12:55:07 by jcasian          ###   ########.fr       */
+/*   Updated: 2018/09/20 20:59:03 by jcasian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 # define PUSH_SWAP_H
 
-#include "libft.h"
+# include "libft.h"
 
 typedef struct	s_stack
 {
@@ -56,7 +56,6 @@ void			rev_rotate_r(t_push_swap *ps);
 void			validate_and_apply(t_push_swap *ps, char *str);
 void			check_repetition(t_push_swap *ps);
 int				both_ordered(t_push_swap *ps);
-int				get_lastVal(t_stack *mystack);
 void			call_and_print(t_push_swap *ps, char *str);
 
 #endif

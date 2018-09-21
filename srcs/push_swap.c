@@ -6,7 +6,7 @@
 /*   By: jcasian <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 20:00:36 by jcasian           #+#    #+#             */
-/*   Updated: 2018/08/15 20:12:26 by jcasian          ###   ########.fr       */
+/*   Updated: 2018/09/20 21:02:00 by jcasian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	push_swap(t_push_swap *ps)
 {
-	while(!(both_ordered(ps)))
+	while (!(both_ordered(ps)))
 	{
 		while (ps->asize > ps->div_size)
 			divide_arr(ps, 'a');

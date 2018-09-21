@@ -1,8 +1,18 @@
-// Header
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_atoll.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jcasian <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/09/20 21:10:40 by jcasian           #+#    #+#             */
+/*   Updated: 2018/09/20 21:11:00 by jcasian          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "libft.h"
 
-long long ft_atoll(const char *str)
+long long	ft_atoll(const char *str)
 {
 	long long	res;
 	int			isnegative;
@@ -27,5 +37,4 @@ long long ft_atoll(const char *str)
 		return (-res);
 	else
 		return (res);
-
 }
