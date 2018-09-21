@@ -28,6 +28,7 @@ typedef struct	s_push_swap
 	t_stack	*b;
 	int		asize;
 	int		bsize;
+	int		div_size;
 	int		fd;
 }				t_push_swap;
 

@@ -14,6 +14,21 @@
 
 void	push_swap(t_push_swap *ps)
 {
+	while(!(both_ordered(ps)))
+	{
+		while (ps->asize > ps->div_size)
+			divide_arr(ps, 'a');
+		quick_sort(ps, 'a');
+		if (ps->b)
+		{
+			while (ps->bsize > ps->div_size)
+				divide_arr(ps, 'b');
+			quick_sort(ps, 'b');
+		}
+		div_size += 2;
+	}
+	while (b->stack)
+		call_and_print(ps, "pa");
 }
 
 int		main(int ac, char **av)
@@ -28,6 +43,5 @@ int		main(int ac, char **av)
 	free(p_input);
 	check_repetition(ps);
 	push_swap(ps);
-//	print_stacks(ps);
 	return (0);
 }

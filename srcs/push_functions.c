@@ -8,6 +8,8 @@ void	push_a(t_push_swap *ps)
 
 	if (!ps->b)
 		return ;
+	(ps->asize)++;
+	(ps->bsize)--;
 	tmp = ps->b;
 	ps->b = ps->b->next;
 	tmp->next = ps->a;
@@ -20,6 +22,8 @@ void	push_b(t_push_swap *ps)
 
 	if (!ps->a)
 		return ;
+	(ps->asize)--;
+	(ps->bsize)++;
 	tmp = ps->a;
 	ps->a = ps->a->next;
 	tmp->next = ps->b;
