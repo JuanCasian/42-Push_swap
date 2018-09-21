@@ -6,7 +6,7 @@
 #    By: jcasian <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/08/15 19:31:56 by jcasian           #+#    #+#              #
-#    Updated: 2018/08/20 13:09:06 by jcasian          ###   ########.fr        #
+#    Updated: 2018/09/20 20:54:36 by jcasian          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -110,12 +110,12 @@ $(PNAME): $(OBJS) $(POBJS)
 
 cclean:
 	@echo "${YELLOW}Cleanning objects...${NC}"
-	@rm -f $(COBJS)
+	@rm -f $(COBJS) $(OBJS)
 	@echo "${GREEN}DONE!${NC}"
 
 pclean:
 	@echo "${YELLOW}Cleanning objects...${NC}"
-	@rm -f $(POBJS)
+	@rm -f $(POBJS) $(OBJS)
 	@echo "${GREEN}DONE!${NC}"
 
 cfclean: cclean
