@@ -18,7 +18,7 @@ static int	check_bstack(t_push_swap *ps)
 
 	if (ps->b)
 	{
-		if (ps->b > ps->a)
+		if (ps->b->val > ps->a->val)
 			return (0);
 		tmp = ps->b;
 		while (tmp->next)
@@ -34,9 +34,7 @@ static int	check_bstack(t_push_swap *ps)
 static int	is_ordered(t_push_swap *ps)
 {
 	t_stack	*tmp;
-	int		prev;
 
-	prev = 2147483647;
 	if (ps->a)
 	{
 		tmp = ps->a;

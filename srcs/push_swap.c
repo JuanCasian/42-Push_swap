@@ -25,9 +25,9 @@ void	push_swap(t_push_swap *ps)
 				divide_arr(ps, 'b');
 			quick_sort(ps, 'b');
 		}
-		div_size += 2;
+		ps->div_size += 2;
 	}
-	while (b->stack)
+	while (ps->b)
 		call_and_print(ps, "pa");
 }
 

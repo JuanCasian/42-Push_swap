@@ -23,5 +23,6 @@ t_push_swap		*initiate_structure(void)
 	ps->asize = 0;
 	ps->bsize = 0;
 	ps->fd = STDIN_FILENO;
+	ps->div_size = 3;
 	return (ps);
 }
