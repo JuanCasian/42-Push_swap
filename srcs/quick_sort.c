@@ -38,36 +38,44 @@ static int	b_ordered(t_push_swap *ps)
 
 static void	quick_sortb(t_push_swap *ps)
 {
+	t_stack *tmp;
+
 	while (!(b_ordered(ps)))
 	{
-		if (ps->bsize >= 3 && ps->b->val < ps->b->next->next->val)
-			call_and_print(ps, "rb");
+		tmp = ps->b;
+		while (tmp->next)
+			tmp = tmp->next;
+		if (ps->b->val < tmp->val)
+		{
+			call_and_print(ps, "rrb");
+			call_and_print(ps, "sb");
+		}
 		else if (ps->b->val < ps->b->next->val)
 			call_and_print(ps, "sb");
-		else if (ps->b->next->val > ps->b->next->next->val)
-		{
-			call_and_print(ps, "pa");
-			call_and_print(ps, "sb");	
-			call_and_print(ps, "pb");
-		}
+		else
+			call_and_print(ps, "rb");
 	}
 }
 
 
 static void	quick_sorta(t_push_swap *ps)
 {
+	t_stack *tmp;
+
 	while (!(a_ordered(ps)))
 	{
-		if (ps->asize >= 3 && ps->a->val > ps->a->next->next->val)
-			call_and_print(ps, "ra");
-		else if (ps->a->val > ps->a->next->val)
+		tmp = ps->a;
+		while (tmp->next)
+			tmp = tmp->next;
+		if (ps->a->val < tmp->val)
+		{
+			call_and_print(ps, "rra");
 			call_and_print(ps, "sa");
-		else if (ps->a->next->val > ps->a->next->next->val)
-		{	
-			call_and_print(ps, "pb");
-			call_and_print(ps, "sa");	
-			call_and_print(ps, "pa");
 		}
+		else if (ps->->val < ps->b->next->val)
+			call_and_print(ps, "sb");
+		else
+			call_and_print(ps, "rb");
 	}
 }
 
