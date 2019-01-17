@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   put_error.c                                        :+:      :+:    :+:   */
+/*   free_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcasian <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/16 19:43:45 by jcasian           #+#    #+#             */
-/*   Updated: 2019/01/17 10:29:13 by jcasian          ###   ########.fr       */
+/*   Created: 2019/01/17 09:14:59 by jcasian           #+#    #+#             */
+/*   Updated: 2019/01/17 09:38:33 by jcasian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/*
-** Print error in error output and terminate program
-*/
-
-void	put_error(void)
+void	free_strings(char ***strings)
 {
-	write(2, "Error\n", 6);
-	exit(-1);
+	char	**s;
+	int		i;
+
+	s = *strings;
+	i = -1;
+	while (s[++i])
+		free(s[i]);
+	free(s);
 }
