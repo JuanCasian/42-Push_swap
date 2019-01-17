@@ -174,6 +174,5 @@ void				prepare_signed(t_info *info);
 void				prepare_char(t_info *info);
 int					ft_countcharsrepetition(char *str, char c);
 int					get_next_line_sin(const int fd, char **line);
-long long			ft_atoll(const char *str);
 
 #endif

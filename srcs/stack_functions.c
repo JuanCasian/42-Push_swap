@@ -5,69 +5,78 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcasian <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/20 21:03:58 by jcasian           #+#    #+#             */
-/*   Updated: 2018/09/20 21:06:01 by jcasian          ###   ########.fr       */
+/*   Created: 2019/01/17 08:32:21 by jcasian           #+#    #+#             */
+/*   Updated: 2019/01/17 10:29:48 by jcasian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*new_elem(int input)
-{
-	t_stack *new_elem;
+/*
+** creates new empty stack
+*/
 
-	if (!(new_elem = (t_stack*)malloc(sizeof(t_stack))))
-		put_error();
-	new_elem->val = input;
-	new_elem->next = NULL;
-	return (new_elem);
+t_stack		*new_stack(void)
+{
+	t_stack	*res;
+
+	if (!(res = (t_stack*)malloc(sizeof(t_stack))))
+		return (NULL);
+	res->head = NULL;
+	res->tail = NULL;
+	res->len = 0;
+	return (res);
 }
 
-void	add_endelem(t_stack **head, t_stack *new_elem)
-{
-	t_stack *tmp;
+/*
+** Create a new node and assing the value
+*/
 
-	if (!(*head))
+t_node		*new_node(int val)
+{
+	t_node	*res;
+
+	if (!(res = (t_node*)malloc(sizeof(t_node))))
+		return (NULL);
+	res->val = val;
+	res->next = NULL;
+	return (res);
+}
+
+/*
+**	Adds nodes to the end of the stack
+*/
+
+t_stack		*add_node_end(t_stack *s, int val)
+{
+	t_node *tmp;
+
+	if (!(tmp = new_node(val)))
+		put_error();
+	if (!s->head && !s->tail)
 	{
-		*head = new_elem;
-		return ;
+		s->head = tmp;
+		s->tail = tmp;
 	}
 	else
 	{
-		tmp = *head;
-		while (tmp->next)
-			tmp = tmp->next;
-		tmp->next = new_elem;
+		s->tail->next = tmp;
+		s->tail = s->tail->next;
 	}
+	s->len++;
+	return (s);
 }
 
-void	init_stack(t_push_swap *ps, int *p_input)
+/*
+** Prints the stack, useful for debug
+*/
+
+void		print_stack(t_stack *s, char c)
 {
-	t_stack *tmp;
-	int		i;
+	t_node	*tmp;
 
-	i = -1;
-	while (++i < ps->asize)
-	{
-		tmp = new_elem(p_input[i]);
-		add_endelem(&(ps->a), tmp);
-	}
-}
-
-void	print_stacks(t_push_swap *ps)
-{
-	t_stack *tmp;
-
-	tmp = ps->a;
-	ft_printf("Stack (a): ");
-	while (tmp)
-	{
-		ft_printf("|%i|->", tmp->val);
-		tmp = tmp->next;
-	}
-	ft_printf("(null)\n");
-	tmp = ps->b;
-	ft_printf("Stack (b): ");
+	tmp = s->head;
+	ft_printf("Stack (%c):\tlen: %i\n", c, s->len);
 	while (tmp)
 	{
 		ft_printf("|%i|->", tmp->val);

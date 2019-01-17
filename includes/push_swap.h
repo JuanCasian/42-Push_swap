@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcasian <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/15 20:06:05 by jcasian           #+#    #+#             */
-/*   Updated: 2018/09/20 20:59:03 by jcasian          ###   ########.fr       */
+/*   Created: 2019/01/16 16:12:10 by jcasian           #+#    #+#             */
+/*   Updated: 2019/01/17 10:45:38 by jcasian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,48 +16,26 @@
 
 # include "libft.h"
 
-typedef struct	s_stack
+typedef	struct	s_node
 {
 	int				val;
-	struct s_stack	*next;
+	struct s_node	*next;
+}				t_node;
+
+typedef struct	s_stack
+{
+	int		len;
+	t_node	*head;
+	t_node	*tail;
 }				t_stack;
 
-typedef struct	s_push_swap
-{
-	t_stack	*a;
-	t_stack	*b;
-	int		asize;
-	int		bsize;
-	int		div_size;
-	int		fd;
-}				t_push_swap;
-
-t_push_swap		*initiate_structure(void);
-void			put_error(void);
-int				*get_input(int ac, char **av, t_push_swap *p);
-t_stack			*new_elem(int input);
-void			add_endelem(t_stack **head, t_stack *new_elem);
-void			init_stack(t_push_swap *ps, int *p_input);
-void			print_stacks(t_push_swap *ps);
-void			free_parsed_str(char ***str);
-void			check_final_order(t_push_swap *ps);
-void			check_initial_order(t_push_swap *ps);
-void			swap_a(t_push_swap *ps);
-void			swap_b(t_push_swap *ps);
-void			swap_s(t_push_swap *ps);
-void			push_a(t_push_swap *ps);
-void			push_b(t_push_swap *ps);
-void			rotate_a(t_push_swap *ps);
-void			rotate_b(t_push_swap *ps);
-void			rotate_r(t_push_swap *ps);
-void			rev_rotate_a(t_push_swap *ps);
-void			rev_rotate_b(t_push_swap *ps);
-void			rev_rotate_r(t_push_swap *ps);
-void			validate_and_apply(t_push_swap *ps, char *str);
-void			check_repetition(t_push_swap *ps);
-int				both_ordered(t_push_swap *ps);
-void			call_and_print(t_push_swap *ps, char *str);
-void			divide_arr(t_push_swap *ps, char c);
-void			quick_sort(t_push_swap *ps, char c);
+t_stack			*input_parsing(int ac, char **av);
+void			put_error();
+t_stack			*new_stack(void);
+t_stack			*add_node_end(t_stack *s, int val);
+void			free_strings(char ***strings);
+void			print_stack(t_stack *s, char c);
+long long		ft_atoll(char *str);
+int				is_ascending(t_stack *s);
 
 #endif

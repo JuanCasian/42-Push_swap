@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jcasian <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2018/08/15 19:31:56 by jcasian           #+#    #+#              #
-#    Updated: 2018/09/20 20:54:36 by jcasian          ###   ########.fr        #
+#    Created: 2019/01/16 18:42:55 by jcasian           #+#    #+#              #
+#    Updated: 2019/01/17 10:45:38 by jcasian          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,25 +15,29 @@ NC = \033[0m
 GREEN = \033[0;32m
 YELLOW = \033[0;33m
 
+# executable names
 CNAME = checker
 PNAME = push_swap
+
+# Directories
 LIBFTDIR = libft
 LIBSDIR = libs
 INCLUDES = includes
-CSRCSDIR = srcs
-PSRCSDIR = srcs
+SRCSDIR = srcs
+
+# compilation flags
 FLAGS = -Wall -Werror -Wextra
 
-CSRCS = $(addprefix $(CSRCSDIR)/,\
+# Source files for all
+CSRCS = $(addprefix $(SRCSDIR)/,\
 		checker.c)
 
-PSRCS = $(addprefix $(PSRCSDIR)/,\
+PSRCS = $(addprefix $(SRCSDIR)/,\
 		push_swap.c)
-SRCS =  $(addprefix $(PSRCSDIR)/,\
-		put_error.c structure_handle.c get_input.c stack_functions.c \
-		free_functions.c check_order_functions.c rotate_functions.c \
-		swap_functions.c rev_rotate_functions.c validate_and_apply.c \
-		push_functions.c quick_sort.c divide_array.c) 
+
+SRCS =  $(addprefix $(SRCSDIR)/,\
+		input_functions.c put_error.c free_functions.c stack_functions.c \
+		ft_atoll.c order_functions.c) 
 
 LIBFTSRCS = $(addprefix $(LIBFTDIR)/,\
 			checks_after_percentage.c ft_atoi.c ft_bzero.c ft_count_words.c \
@@ -57,8 +61,9 @@ LIBFTSRCS = $(addprefix $(LIBFTDIR)/,\
 			prepare_char.c prepare_hexadecimal.c prepare_octal.c \
 			prepare_percentage.c prepare_signed.c prepare_str.c prepare_undecimal.c \
 			print_error.c struct_handle.c ft_countcharsrepetition.c \
-			get_next_line_stdin.c ft_atoll.c)
+			get_next_line_stdin.c)
 
+# Object names
 LIBFTOBJECTS = $(patsubst %.c, %.o, $(LIBFTSRCS))
 
 OBJS = $(patsubst %.c, %.o, $(SRCS))
@@ -69,6 +74,7 @@ POBJS = $(patsubst %.c, %.o, $(PSRCS))
 
 all: lib $(CNAME) $(PNAME)
 
+# objects creation
 $(OBJS): %.o: %.c
 	@echo "${YELLOW}Preparing Objects... Please wait${NC}"
 	@gcc $(FLAGS) -I$(INCLUDES) -c $< -o $@
@@ -85,6 +91,7 @@ $(POBJS): %.o: %.c
 	@echo "${YELLOW}Preparing Push_swap... Please wait${NC}"
 	@gcc $(FLAGS) -I$(INCLUDES) -c $< -o $@
 
+# library processes
 lib: $(LIBFTOBJECTS)
 	@ar rc $(LIBSDIR)/libft.a $(LIBFTOBJECTS)
 	@ranlib $(LIBSDIR)/libft.a
@@ -100,6 +107,7 @@ libfclean: libclean
 	@rm -f $(LIBSDIR)/libft.a
 	@echo "${GREEN}DONE!${NC}"
 
+# executables creations
 $(CNAME): $(OBJS) $(COBJS) 
 	@gcc -Wall -Werror -Wextra -I$(INCLUDES) -L$(LIBSDIR) -lft $(COBJS) $(OBJS) -o $(CNAME)
 	@echo "${GREEN}Program:" $(CNAME) "is ready!${NC}"
@@ -108,6 +116,7 @@ $(PNAME): $(OBJS) $(POBJS)
 	@gcc -Wall -Werror -Wextra -I$(INCLUDES) -L$(LIBSDIR) -lft $(POBJS) $(OBJS) -o $(PNAME)
 	@echo "${GREEN}Program:" $(PNAME) "is ready!${NC}"
 
+# cleaning functions
 cclean:
 	@echo "${YELLOW}Cleanning objects...${NC}"
 	@rm -f $(COBJS) $(OBJS)
@@ -132,6 +141,7 @@ clean:  cclean pclean libclean
 
 fclean: pfclean cfclean libfclean
 
+# debuging processes
 debug$(CNAME):
 	gcc -g -Wall -Werror -Wextra $(CSRCS) $(SRCS) $(LIBFTSRCS) -I$(INCLUDES) -o debug
 
@@ -148,6 +158,4 @@ re$(CNAME): cfclean $(CNAME)
 re$(PNAME): cfclean $(PNAME)
 
 re: pfclean cfclean libfclean all
-
-
 

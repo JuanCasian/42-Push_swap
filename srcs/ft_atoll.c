@@ -5,14 +5,18 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcasian <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/20 21:10:40 by jcasian           #+#    #+#             */
-/*   Updated: 2018/09/20 21:11:00 by jcasian          ###   ########.fr       */
+/*   Created: 2019/01/17 09:31:26 by jcasian           #+#    #+#             */
+/*   Updated: 2019/01/17 10:31:59 by jcasian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-long long	ft_atoll(const char *str)
+/*
+** converts a string into a long long
+*/
+
+long long	ft_atoll(char *str)
 {
 	long long	res;
 	int			isnegative;

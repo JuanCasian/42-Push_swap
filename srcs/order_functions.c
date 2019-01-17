@@ -1,41 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_functions.c                                   :+:      :+:    :+:   */
+/*   order_functions.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcasian <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/20 21:07:17 by jcasian           #+#    #+#             */
-/*   Updated: 2018/09/20 21:07:22 by jcasian          ###   ########.fr       */
+/*   Created: 2019/01/17 10:41:13 by jcasian           #+#    #+#             */
+/*   Updated: 2019/01/17 10:44:17 by jcasian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_a(t_push_swap *ps)
+/*
+**	Checks if the order is ascending in the stack
+*/
+
+int	is_ascending(t_stack *s)
 {
-	t_stack *tmp;
+	t_node	*tmp;
 
-	if (!ps->b)
-		return ;
-	(ps->asize)++;
-	(ps->bsize)--;
-	tmp = ps->b;
-	ps->b = ps->b->next;
-	tmp->next = ps->a;
-	ps->a = tmp;
-}
-
-void	push_b(t_push_swap *ps)
-{
-	t_stack *tmp;
-
-	if (!ps->a)
-		return ;
-	(ps->asize)--;
-	(ps->bsize)++;
-	tmp = ps->a;
-	ps->a = ps->a->next;
-	tmp->next = ps->b;
-	ps->b = tmp;
+	tmp = s->head;
+	while (tmp->next)
+	{
+		if (tmp->val > tmp->next->val)
+			return (0);
+		tmp = tmp->next;
+	}
+	return (1);
 }

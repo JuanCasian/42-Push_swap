@@ -5,23 +5,21 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcasian <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/20 21:07:44 by jcasian           #+#    #+#             */
-/*   Updated: 2018/09/20 21:07:46 by jcasian          ###   ########.fr       */
+/*   Created: 2019/01/17 09:14:59 by jcasian           #+#    #+#             */
+/*   Updated: 2019/01/17 09:38:33 by jcasian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	free_parsed_str(char ***str)
+void	free_strings(char ***strings)
 {
-	int i;
+	char	**s;
+	int		i;
 
+	s = *strings;
 	i = -1;
-	if (!str)
-		return ;
-	while (str[0][++i])
-		free(str[0][i]);
-	if (*str)
-		free(*str);
-	*str = NULL;
+	while (s[++i])
+		free(s[i]);
+	free(s);
 }
