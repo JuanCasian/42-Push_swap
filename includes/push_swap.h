@@ -6,7 +6,7 @@
 /*   By: jcasian <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 16:12:10 by jcasian           #+#    #+#             */
-/*   Updated: 2019/01/17 10:45:38 by jcasian          ###   ########.fr       */
+/*   Updated: 2019/01/17 19:46:13 by jcasian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,12 @@ void			free_strings(char ***strings);
 void			print_stack(t_stack *s, char c);
 long long		ft_atoll(char *str);
 int				is_ascending(t_stack *s);
+void			push(t_stack *src, t_stack *target);
+void			rev_rotate(t_stack *s);
+void			rev_rotate_r(t_stack *a, t_stack *b);
+void			rotate(t_stack *s);
+void			rotate_r(t_stack *a, t_stack *b);
+void			swap(t_stack *s);
+void			swap_s(t_stack *a, t_stack *b);
 
 #endif
