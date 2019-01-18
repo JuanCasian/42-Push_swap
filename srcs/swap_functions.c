@@ -1,29 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_functions.c                                   :+:      :+:    :+:   */
+/*   swap_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcasian <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/17 09:14:59 by jcasian           #+#    #+#             */
-/*   Updated: 2019/01/17 19:39:56 by jcasian          ###   ########.fr       */
+/*   Created: 2019/01/17 17:49:56 by jcasian           #+#    #+#             */
+/*   Updated: 2019/01/17 19:59:13 by jcasian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 /*
-** Free the array of strings used in the input parsing
+** swaps the first 2 elements of the stack
 */
 
-void	free_strings(char ***strings)
+void	swap(t_stack *s)
 {
-	char	**s;
-	int		i;
+	t_node	*tmp;
 
-	s = *strings;
-	i = -1;
-	while (s[++i])
-		free(s[i]);
-	free(s);
+	if (!s || !s->head || !s->head->next)
+		return ;
+	if (s->len == 2)
+		s->tail = s->head;
+	tmp = s->head->next;
+	s->head->next = s->head->next->next;
+	tmp->next = s->head;
+	s->head = tmp;
+}
+
+void	swap_s(t_stack *a, t_stack *b)
+{
+	swap(a);
+	swap(b);
 }

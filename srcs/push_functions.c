@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_functions.c                                   :+:      :+:    :+:   */
+/*   push_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcasian <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/17 09:14:59 by jcasian           #+#    #+#             */
-/*   Updated: 2019/01/17 19:39:56 by jcasian          ###   ########.fr       */
+/*   Created: 2019/01/17 18:38:04 by jcasian           #+#    #+#             */
+/*   Updated: 2019/01/17 19:47:16 by jcasian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 /*
-** Free the array of strings used in the input parsing
+** Push the head of one stack into the top of the other
 */
 
-void	free_strings(char ***strings)
+void	push(t_stack *src, t_stack *target)
 {
-	char	**s;
-	int		i;
+	t_node	*tmp;
 
-	s = *strings;
-	i = -1;
-	while (s[++i])
-		free(s[i]);
-	free(s);
+	if (!src || !src->head)
+		return ;
+	src->len--;
+	target->len++;
+	tmp = src->head;
+	src->head = src->head->next;
+	tmp->next = target->head;
+	target->head = tmp;
+	if (target->len == 1)
+		target->tail = target->head;
 }
