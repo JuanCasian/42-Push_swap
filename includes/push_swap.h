@@ -6,7 +6,7 @@
 /*   By: jcasian <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 16:12:10 by jcasian           #+#    #+#             */
-/*   Updated: 2019/01/17 19:46:13 by jcasian          ###   ########.fr       */
+/*   Updated: 2019/01/19 20:57:43 by jcasian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,9 @@ void			rotate(t_stack *s);
 void			rotate_r(t_stack *a, t_stack *b);
 void			swap(t_stack *s);
 void			swap_s(t_stack *a, t_stack *b);
+void			validate_and_apply(t_stack *a, t_stack *b, char *str);
+void			call_and_print(t_stack *a, t_stack *b, char *str);
+void			small_sort(t_stack *a, t_stack *b);
+int				is_descending(t_stack *s);
 
 #endif
