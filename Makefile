@@ -6,7 +6,7 @@
 #    By: jcasian <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/16 18:42:55 by jcasian           #+#    #+#              #
-#    Updated: 2019/01/17 19:48:19 by jcasian          ###   ########.fr        #
+#    Updated: 2019/01/19 20:55:42 by jcasian          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,8 @@ PSRCS = $(addprefix $(SRCSDIR)/,\
 SRCS =  $(addprefix $(SRCSDIR)/,\
 		input_functions.c put_error.c free_functions.c stack_functions.c \
 		ft_atoll.c order_functions.c push_functions.c rotate_functions.c \
-		swap_functions.c rev_rotate_functions.c) 
+		swap_functions.c rev_rotate_functions.c calling_functions.c \
+		small_sort.c) 
 
 LIBFTSRCS = $(addprefix $(LIBFTDIR)/,\
 			checks_after_percentage.c ft_atoi.c ft_bzero.c ft_count_words.c \

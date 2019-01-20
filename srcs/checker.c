@@ -6,7 +6,7 @@
 /*   By: jcasian <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 15:39:32 by jcasian           #+#    #+#             */
-/*   Updated: 2019/01/17 19:55:01 by jcasian          ###   ########.fr       */
+/*   Updated: 2019/01/19 21:03:27 by jcasian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,39 +25,6 @@ static void	print_result(t_stack *a, t_stack *b)
 		ft_printf("KO\n");
 }
 
-/*
-** This function will check if the user's input is valid and if so
-** it will do the respective function on the stacks
-*/
-
-void		validate_and_apply(t_stack *a, t_stack *b, char *str)
-{
-	if (!(ft_strcmp(str, "sa")))
-		swap(a);
-	else if (!(ft_strcmp(str, "sb")))
-		swap(b);
-	else if (!(ft_strcmp(str, "ss")))
-		swap_s(a, b);
-	else if (!(ft_strcmp(str, "pa")))
-		push(b, a);
-	else if (!(ft_strcmp(str, "pb")))
-		push(a, b);
-	else if (!(ft_strcmp(str, "ra")))
-		rotate(a);
-	else if (!(ft_strcmp(str, "rb")))
-		rotate(b);
-	else if (!(ft_strcmp(str, "rr")))
-		rotate_r(a, b);
-	else if (!(ft_strcmp(str, "rra")))
-		rev_rotate(a);
-	else if (!(ft_strcmp(str, "rrb")))
-		rev_rotate(b);
-	else if (!(ft_strcmp(str, "rrr")))
-		rev_rotate_r(a, b);
-	else
-		put_error();
-}
-
 int			main(int ac, char **av)
 {
 	t_stack	*stack_a;
@@ -73,8 +40,8 @@ int			main(int ac, char **av)
 	flag = 1;
 	while (flag)
 	{
-		print_stack(stack_a, 'a');
-		print_stack(stack_b, 'b');
+//		print_stack(stack_a, 'a');
+//		print_stack(stack_b, 'b');
 		line = NULL;
 		if ((gres = get_next_line_sin(STDIN_FILENO, &line)) < 0)
 			put_error();
