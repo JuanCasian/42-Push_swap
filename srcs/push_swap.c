@@ -24,8 +24,8 @@ int		main(int ac, char **av)
 		return (0);
 	b = new_stack();
 	if (a->len < 30)
-		small_sort(a, b);
-	//else
-	//	divide_sort(a, b);
+		small_sort(a, b, NOT_SILENCED);
+	else
+		big_sort(a, b);
 	return (0);
 }

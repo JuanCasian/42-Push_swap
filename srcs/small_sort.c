@@ -46,7 +46,7 @@ int		get_min_index(t_stack *a)
 ** it decides which rotate method to use depending on the index of minimum
 */
 
-void	get_min(t_stack *a, t_stack *b)
+void	get_min(t_stack *a, t_stack *b, int silence)
 {
 	int	index;
 	int	movements;
@@ -57,12 +57,18 @@ void	get_min(t_stack *a, t_stack *b)
 	{
 		movements -= index;
 		while (movements--)
-			call_and_print(a, b, "rra");
+			if (!silence)
+				call_and_print(a, b, "rra");
+			else
+				validate_and_apply(a, b, "rra");
 	}
 	else
 	{
 		while (index--)
-			call_and_print(a, b, "ra");
+			if (!silence)
+				call_and_print(a, b, "ra");
+			else
+				validate_and_apply(a, b, "ra");
 	}
 }
 
@@ -71,18 +77,26 @@ void	get_min(t_stack *a, t_stack *b)
 ** until you get an ordered list and just push everything back to a
 */
 
-void	small_sort(t_stack *a, t_stack *b)
+void	small_sort(t_stack *a, t_stack *b, int silence)
 {
-	if (a && a->head && a->head->next)
+	if (a && a->head && a->head->next && !silence)
 		call_and_print(a, b, "sa");
+	else if (a && a->head && a->head->next && silence)
+		validate_and_apply(a, b, "sa");
 	while (!is_ascending(a) || !is_descending(b) ||
 			a->head->val < b->head->val)
 	{
-		get_min(a, b);
+		get_min(a, b, silence);
 		if (is_ascending(a))
 			break ;
-		call_and_print(a, b, "pb");
+		if (!silence)
+			call_and_print(a, b, "pb");
+		else
+			validate_and_apply(a, b, "pb");
 	}
 	while (b->head)
-		call_and_print(a, b, "pa");
+		if (!silence)
+			call_and_print(a, b, "pa");
+		else
+			validate_and_apply(a, b, "pa");
 }

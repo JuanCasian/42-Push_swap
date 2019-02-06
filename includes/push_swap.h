@@ -13,6 +13,8 @@
 #ifndef PUSH_SWAP_H
 
 # define PUSH_SWAP_H
+# define SILENCED 1
+# define NOT_SILENCED 0
 
 # include "libft.h"
 
@@ -46,7 +48,10 @@ void			swap(t_stack *s);
 void			swap_s(t_stack *a, t_stack *b);
 void			validate_and_apply(t_stack *a, t_stack *b, char *str);
 void			call_and_print(t_stack *a, t_stack *b, char *str);
-void			small_sort(t_stack *a, t_stack *b);
+void			small_sort(t_stack *a, t_stack *b, int silence);
 int				is_descending(t_stack *s);
+void    		big_sort(t_stack *a, t_stack *b);
+t_stack			*copy_stack(t_stack *src);
+void			ascending_sort(t_stack *a, t_stack *b);
 
 #endif

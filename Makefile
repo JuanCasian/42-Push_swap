@@ -39,7 +39,7 @@ SRCS =  $(addprefix $(SRCSDIR)/,\
 		input_functions.c put_error.c free_functions.c stack_functions.c \
 		ft_atoll.c order_functions.c push_functions.c rotate_functions.c \
 		swap_functions.c rev_rotate_functions.c calling_functions.c \
-		small_sort.c) 
+		small_sort.c big_sort.c ascending_sort.c) 
 
 LIBFTSRCS = $(addprefix $(LIBFTDIR)/,\
 			checks_after_percentage.c ft_atoi.c ft_bzero.c ft_count_words.c \

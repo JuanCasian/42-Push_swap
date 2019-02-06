@@ -84,3 +84,24 @@ void		print_stack(t_stack *s, char c)
 	}
 	ft_printf("(null)\n");
 }
+
+/*
+** Creates a copy of the stack passed in as parameter and returns it
+*/
+
+t_stack		*copy_stack(t_stack *src)
+{
+	t_stack *res;
+	t_node	*tmp;
+
+	if (!src || !src->head || !src->tail || src->len == 0)
+		put_error();
+	res = new_stack();
+	tmp = src->head;
+	while (tmp)
+	{
+		res = add_node_end(res, tmp->val);
+		tmp = tmp->next;
+	}
+	return (res);
+}

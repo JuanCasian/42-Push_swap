@@ -20,6 +20,8 @@ int	is_ascending(t_stack *s)
 {
 	t_node	*tmp;
 
+	if (!s || !s->head)
+		return (1);
 	tmp = s->head;
 	while (tmp->next)
 	{
@@ -38,6 +40,8 @@ int	is_descending(t_stack *s)
 {
 	t_node	*tmp;
 
+	if (!s || !s->head)
+		return (1);
 	tmp = s->head;
 	while (tmp->next)
 	{
