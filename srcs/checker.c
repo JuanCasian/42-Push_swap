@@ -40,8 +40,6 @@ int			main(int ac, char **av)
 	flag = 1;
 	while (flag)
 	{
-//		print_stack(stack_a, 'a');
-//		print_stack(stack_b, 'b');
 		line = NULL;
 		if ((gres = get_next_line_sin(STDIN_FILENO, &line)) < 0)
 			put_error();

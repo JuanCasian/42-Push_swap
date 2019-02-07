@@ -50,9 +50,9 @@ void			validate_and_apply(t_stack *a, t_stack *b, char *str);
 void			call_and_print(t_stack *a, t_stack *b, char *str);
 void			small_sort(t_stack *a, t_stack *b, int silence);
 int				is_descending(t_stack *s);
-void    		big_sort(t_stack *a, t_stack *b);
+void			big_sort(t_stack *a, t_stack *b);
 t_stack			*copy_stack(t_stack *src);
 void			ascending_sort(t_stack *a, t_stack *b);
-void    		get_next_smaller(t_stack *a, t_stack *b, int pivot);
+void			get_next_smaller(t_stack *a, t_stack *b, int pivot);
 
 #endif

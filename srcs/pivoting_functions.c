@@ -16,7 +16,7 @@
 ** gets the index of the next number smaller than the pivot
 */
 
-int     get_next_index(t_stack *a, int pivot)
+int		get_next_index(t_stack *a, int pivot)
 {
 	int		i;
 	t_node	*tmp;
@@ -26,11 +26,11 @@ int     get_next_index(t_stack *a, int pivot)
 	while (tmp)
 	{
 		if (tmp->val <= pivot)
-            return (i);
+			return (i);
 		tmp = tmp->next;
 		i++;
 	}
-	return (i);   
+	return (i);
 }
 
 /*
@@ -38,18 +38,18 @@ int     get_next_index(t_stack *a, int pivot)
 ** the pivot
 */
 
-void    get_next_smaller(t_stack *a, t_stack *b, int pivot)
+void	get_next_smaller(t_stack *a, t_stack *b, int pivot)
 {
-    int index;
-    int movements;
+	int index;
+	int movements;
 
-    index = get_next_index(a, pivot);
-    movements = a->len;
-    if (index > a->len / 2)
+	index = get_next_index(a, pivot);
+	movements = a->len;
+	if (index > a->len / 2)
 	{
 		movements -= index;
 		while (movements--)
-		    call_and_print(a, b, "rra");
+			call_and_print(a, b, "rra");
 	}
 	else
 	{

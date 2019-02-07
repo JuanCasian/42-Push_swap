@@ -16,9 +16,9 @@
 ** Gets the index of the max node in b
 */
 
-int     get_max_index(t_stack *b)
+int		get_max_index(t_stack *b)
 {
-    int		i;
+	int		i;
 	int		index;
 	int		max;
 	t_node	*tmp;
@@ -44,40 +44,40 @@ int     get_max_index(t_stack *b)
 ** Rotate to get the max node in b
 */
 
-void    get_max(t_stack *a, t_stack *b)
+void	get_max(t_stack *a, t_stack *b)
 {
-    int index;
-    int movements;
-    
-    index = get_max_index(b);
-    movements = b->len;
-    if (index > b->len / 2)
-    {
-        movements -= index;
-        while (movements--)
-            call_and_print(a, b, "rrb");
-    }
-    else
-    {
-        while (index--)
-            call_and_print(a, b, "rb");
-    }
+	int index;
+	int movements;
+
+	index = get_max_index(b);
+	movements = b->len;
+	if (index > b->len / 2)
+	{
+		movements -= index;
+		while (movements--)
+			call_and_print(a, b, "rrb");
+	}
+	else
+	{
+		while (index--)
+			call_and_print(a, b, "rb");
+	}
 }
 
 /*
 ** Sorting numbers back to a stack
 */
 
-void    ascending_sort(t_stack *a, t_stack *b)
+void	ascending_sort(t_stack *a, t_stack *b)
 {
-    while (!is_ascending(a) || !is_descending(b) ||
-    a->head->val < b->head->val)
-    {
-        get_max(a, b);
-        if (is_descending(b))
-            break ;
-        call_and_print(a, b, "pa");
-    }
-    while (b->head)
-        call_and_print(a, b, "pa");
+	while (!is_ascending(a) || !is_descending(b) ||
+	a->head->val < b->head->val)
+	{
+		get_max(a, b);
+		if (is_descending(b))
+			break ;
+		call_and_print(a, b, "pa");
+	}
+	while (b->head)
+		call_and_print(a, b, "pa");
 }

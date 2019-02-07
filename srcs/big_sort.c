@@ -17,70 +17,70 @@
 ** separate them. This numbers are added to the pivots array.
 */
 
-void    get_pivots(t_stack *ord, int *pivots)
+void	get_pivots(t_stack *ord, int *pivots)
 {
-    int     index;
-    int     i;
-    int     j;
-    int     moving_index;
-    t_node  *tmp;
+	int		index;
+	int		i;
+	int		j;
+	int		moving_index;
+	t_node	*tmp;
 
-    pivots[0] = ord->len < 200 ? 5 : 15;
-    index = ord->len / pivots[0];
-    i = 1;
-    j = 1;
-    tmp = ord->head;
-    moving_index = index;
-    while (j <= pivots[0])
-    {
-        if (i == moving_index)
-        {
-            pivots[j] = tmp->val;
-            moving_index += index;
-            j++;
-        }
-        tmp = tmp->next;
-        i++;
-    }
+	pivots[0] = ord->len < 200 ? 5 : 15;
+	index = ord->len / pivots[0];
+	i = 1;
+	j = 1;
+	tmp = ord->head;
+	moving_index = index;
+	while (j <= pivots[0])
+	{
+		if (i == moving_index)
+		{
+			pivots[j] = tmp->val;
+			moving_index += index;
+			j++;
+		}
+		tmp = tmp->next;
+		i++;
+	}
 }
 
 /*
 ** Returns wether there is a smaller number than the pivot or not
 */
 
-int     num_smaller_pivot(int pivot, t_stack *a)
+int		num_smaller_pivot(int pivot, t_stack *a)
 {
-    t_node *tmp;
+	t_node *tmp;
 
-    tmp = a->head;
-    while (tmp)
-    {
-        if (tmp->val < pivot)
-            return (1);
-        tmp = tmp->next;
-    }
-    return (0);
+	tmp = a->head;
+	while (tmp)
+	{
+		if (tmp->val < pivot)
+			return (1);
+		tmp = tmp->next;
+	}
+	return (0);
 }
 
 /*
 ** Uses the pivots numbers to send smaller groups of numbers to b stack
 */
 
-void    send_to_b(t_stack *a, t_stack *b, int *pivots)
+void	send_to_b(t_stack *a, t_stack *b, int *pivots)
 {
-    int current_piv;
+	int current_piv;
 
-    current_piv = 0;
-    while (++current_piv <= pivots[0])
-    {
-        while (num_smaller_pivot(pivots[current_piv], a))
-        {
-            get_next_smaller(a, b, pivots[current_piv]);
-            call_and_print(a, b, "pb");
-        }
-    }
-    while (a->head != NULL)
-        call_and_print(a, b, "pb");
+	current_piv = 0;
+	while (++current_piv <= pivots[0])
+	{
+		while (num_smaller_pivot(pivots[current_piv], a))
+		{
+			get_next_smaller(a, b, pivots[current_piv]);
+			call_and_print(a, b, "pb");
+		}
+	}
+	while (a->head != NULL)
+		call_and_print(a, b, "pb");
 }
 
 /*
@@ -89,14 +89,14 @@ void    send_to_b(t_stack *a, t_stack *b, int *pivots)
 ** significantly.
 */
 
-void    big_sort(t_stack *a, t_stack *b)
+void	big_sort(t_stack *a, t_stack *b)
 {
-    t_stack *ord;
-    int     pivots[40];
+	t_stack *ord;
+	int		pivots[40];
 
-    ord = copy_stack(a);
-    small_sort(ord, b, SILENCED);
-    get_pivots(ord, pivots);
-    send_to_b(a, b, pivots);
-    ascending_sort(a, b);
+	ord = copy_stack(a);
+	small_sort(ord, b, SILENCED);
+	get_pivots(ord, pivots);
+	send_to_b(a, b, pivots);
+	ascending_sort(a, b);
 }
