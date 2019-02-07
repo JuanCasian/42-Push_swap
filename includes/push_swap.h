@@ -53,5 +53,6 @@ int				is_descending(t_stack *s);
 void    		big_sort(t_stack *a, t_stack *b);
 t_stack			*copy_stack(t_stack *src);
 void			ascending_sort(t_stack *a, t_stack *b);
+void    		get_next_smaller(t_stack *a, t_stack *b, int pivot);
 
 #endif

@@ -25,7 +25,7 @@ void    get_pivots(t_stack *ord, int *pivots)
     int     moving_index;
     t_node  *tmp;
 
-    pivots[0] = ord->len < 200 ? 5 : 12;
+    pivots[0] = ord->len < 200 ? 5 : 15;
     index = ord->len / pivots[0];
     i = 1;
     j = 1;
@@ -75,10 +75,8 @@ void    send_to_b(t_stack *a, t_stack *b, int *pivots)
     {
         while (num_smaller_pivot(pivots[current_piv], a))
         {
-            if (a->head->val <= pivots[current_piv])
-                call_and_print(a, b, "pb");
-            else
-                call_and_print(a, b, "ra");
+            get_next_smaller(a, b, pivots[current_piv]);
+            call_and_print(a, b, "pb");
         }
     }
     while (a->head != NULL)
