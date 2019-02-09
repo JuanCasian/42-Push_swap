@@ -84,6 +84,29 @@ void	send_to_b(t_stack *a, t_stack *b, int *pivots)
 }
 
 /*
+** Frees the node of the copy stack created
+*/
+
+void	free_ord(t_stack *ord)
+{
+	t_node *tmp;
+	t_node *eraser;
+
+	tmp = ord->head;
+	ord->head = NULL;
+	ord->tail = NULL;
+	ord->len = 0;
+	while (tmp)
+	{
+		eraser = tmp;
+		tmp = tmp->next;
+		eraser->val = 0;
+		eraser->next = NULL;
+		free(eraser);
+	}
+}
+
+/*
 ** Sorts stacks by dividing them into smaller subgroups and then using
 ** small sort. By dividing the stack, the number of movements decreases
 ** significantly.
@@ -99,4 +122,6 @@ void	big_sort(t_stack *a, t_stack *b)
 	get_pivots(ord, pivots);
 	send_to_b(a, b, pivots);
 	ascending_sort(a, b);
+	free_ord(ord);
+	free(ord);
 }
